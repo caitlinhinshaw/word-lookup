@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-puts 'hello'
+require_relative '../lib/word_lookup'
+
+WordLookup::CLI.new.call
