@@ -3,7 +3,7 @@ require_relative "./word_lookup/cli"
 
 require 'pry'
 require 'json'
-require 'unirest'
+#require 'unirest'
 
 module WordLookup
   class Error < StandardError; end
