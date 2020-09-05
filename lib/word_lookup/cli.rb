@@ -8,8 +8,7 @@ class WordLookup::CLI
         # get_details_for(word)
         list_detail_categories
         get_chosen_details
-        # valid_details?
-        # list_details
+        # list_details(chosen_details)
     end
 
     def detail_categories
@@ -33,6 +32,7 @@ class WordLookup::CLI
         chosen_details = gets.strip.to_i
         if valid_details?(chosen_details)
             puts "this is valid"
+            # list_details(chosen_details)
         else
             puts "this is NOT valid, please try again"
             get_chosen_details
@@ -41,6 +41,9 @@ class WordLookup::CLI
 
     def valid_details?(input)
         input <= detail_categories.length && input > 0
-        
+    end
+
+    def list_details(chosen_details)
+
     end
 end
