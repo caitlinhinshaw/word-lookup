@@ -3,6 +3,7 @@ require_relative "./word_lookup/cli"
 
 require 'pry'
 require 'json'
+require 'httparty'
 
 module WordLookup
   class Error < StandardError; end
