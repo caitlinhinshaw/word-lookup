@@ -18,3 +18,5 @@
     - Word: know about words
     - CLI: interact with user
     - API: get data from api and transform?
+    - Validator: check if word is valid (no numbers, symbols, etc) before
+      calling API
