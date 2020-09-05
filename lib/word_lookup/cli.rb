@@ -1,11 +1,19 @@
 class WordLookup::CLI
+    @@detail_categories = ["Definition", "Synonyms", "Antonyms", "Similar Words", "Rhymes"]
+    
     def call
         puts "\nWelcome to Word Lookup!"
         get_chosen_word
+        # valid_word?
         # get_details_for(word)
         list_detail_categories
         get_chosen_details
+        # valid_details?
         # list_details
+    end
+
+    def detail_categories
+        @@detail_categories
     end
 
     def get_chosen_word
@@ -16,7 +24,6 @@ class WordLookup::CLI
     def list_detail_categories
         puts "\nWhat information would you like about this word? Enter a number."
         puts "\n"
-        detail_categories = ["Definition", "Synonyms", "Antonyms", "Similar Words", "Rhymes"]
         detail_categories.each_with_index do |category, index|
             puts "#{index+1}. #{category}"
         end
@@ -24,6 +31,16 @@ class WordLookup::CLI
 
     def get_chosen_details
         chosen_details = gets.strip.to_i
-        #add validation of number
+        if valid_details?(chosen_details)
+            puts "this is valid"
+        else
+            puts "this is NOT valid, please try again"
+            get_chosen_details
+        end
+    end
+
+    def valid_details?(input)
+        input <= detail_categories.length && input > 0
+        
     end
 end
