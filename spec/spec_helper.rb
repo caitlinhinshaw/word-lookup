@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "word_lookup"
+require "./lib/environment"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

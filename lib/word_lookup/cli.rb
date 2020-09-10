@@ -12,6 +12,8 @@ class WordLookup::CLI
     def get_chosen_word
         puts "\nEnter a word to look up:"
         word = gets.strip
+        WordLookup::Word.new(word)
+        binding.pry
     end
 
     def list_detail_categories
