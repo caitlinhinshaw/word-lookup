@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     word_lookup (0.1.0)
-      httparty
 
 GEM
   remote: https://rubygems.org/
