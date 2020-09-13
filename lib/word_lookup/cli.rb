@@ -4,9 +4,9 @@ class WordLookup::CLI
     def call
         puts "\nWelcome to Word Lookup!"
         choose_word
-        choose_definition
+        #choose_definition
         #list_detail_categories
-        choose_details
+        #choose_details
     end
 
     def choose_word
@@ -23,6 +23,7 @@ class WordLookup::CLI
         else
             @current_word.add_details
             list_definitions
+            list_detail_categories
         end
     end
 
@@ -34,19 +35,19 @@ class WordLookup::CLI
         end
     end
     
-    def choose_definition
-        puts "\nWhich definition would you like more info on?"
-        puts "Enter the corresponding number."
-        definition_number = gets.strip.to_i
-        if valid_choice?(definition_number, @current_definitions)
-            @current_definition_index = definition_number - 1
-            puts "\nYou chose the definition: '#{@current_definitions[@current_definition_index]}'"
-            list_detail_categories
-        else
-            puts "\nThat number is not valid! Please try again."
-            choose_definition
-        end
-    end
+    # def choose_definition
+    #     puts "\nWhich definition would you like more info on?"
+    #     puts "Enter the corresponding number."
+    #     definition_number = gets.strip.to_i
+    #     if valid_choice?(definition_number, @current_definitions)
+    #         @current_definition_index = definition_number - 1
+    #         puts "\nYou chose the definition: '#{@current_definitions[@current_definition_index]}'"
+    #         list_detail_categories
+    #     else
+    #         puts "\nThat number is not valid! Please try again."
+    #         choose_definition
+    #     end
+    # end
 
     def list_detail_categories
         puts "\nWhat information would you like about this word? Enter a number."
@@ -54,14 +55,13 @@ class WordLookup::CLI
         WordLookup::Word.detail_categories.each_with_index do |category, index|
             puts "#{index+1}. #{category}"
         end
+        choose_details
     end
 
     def choose_details
         chosen_details = gets.strip.to_i
         if valid_choice?(chosen_details, WordLookup::Word.detail_categories)
-            puts "this is valid"
-            # list_details(chosen_details)
-            pp @current_word.detail_hash
+            list_details(chosen_details)
         else
             puts "this is NOT valid, please try again"
             choose_details
@@ -73,6 +73,46 @@ class WordLookup::CLI
     end
 
     def list_details(chosen_details)
+        case chosen_details
+        when 1
+            puts "\nHere are the synonyms for '#{@current_word.word_text}':"
+            print_detail_array(@current_word.synonyms)
+        when 2
+            puts "\nHere are the antonyms for '#{@current_word.word_text}':"
+            print_detail_array(@current_word.antonyms)
+        when 3
+            puts "\nHere are the similar words for '#{@current_word.word_text}':"
+            print_detail_array(@current_word.similar_words)
+        when 4
+            puts "\nHere are the rhymes for '#{@current_word.word_text}':"
+            print_detail_array(@current_word.rhymes)
+        end
+        choose_next_action
+    end
 
+    def print_detail_array(array)
+        array.each do |item|
+            puts "- #{item}"
+        end
+    end
+
+    def choose_next_action
+        puts "\nWhat would you like to do?"
+        puts "Enter 1 for more details on '#{@current_word.word_text}'."
+        puts "Enter 2 to look up a new word."
+        puts "Enter 3 to exit the program."
+        next_action = gets.strip.to_i
+        case next_action
+        when 1
+            list_detail_categories
+        when 2
+            choose_word
+        when 3
+            puts "Goodbye!"
+            exit
+        else
+            puts "This is not a valid selection. Please try again."
+            choose_next_action
+        end
     end
 end
