@@ -31,7 +31,7 @@ class WordLookup::CLI
         if valid_details?(chosen_details)
             puts "this is valid"
             # list_details(chosen_details)
-            pp @current_word.fetch_details
+            pp @current_word.definitions
         else
             puts "this is NOT valid, please try again"
             get_chosen_details
