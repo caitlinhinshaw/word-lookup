@@ -4,9 +4,6 @@ class WordLookup::CLI
     def call
         puts "\nWelcome to Word Lookup!"
         choose_word
-        #choose_definition
-        #list_detail_categories
-        #choose_details
     end
 
     def choose_word
@@ -34,20 +31,6 @@ class WordLookup::CLI
             puts "#{index+1}. #{definition}"
         end
     end
-    
-    # def choose_definition
-    #     puts "\nWhich definition would you like more info on?"
-    #     puts "Enter the corresponding number."
-    #     definition_number = gets.strip.to_i
-    #     if valid_choice?(definition_number, @current_definitions)
-    #         @current_definition_index = definition_number - 1
-    #         puts "\nYou chose the definition: '#{@current_definitions[@current_definition_index]}'"
-    #         list_detail_categories
-    #     else
-    #         puts "\nThat number is not valid! Please try again."
-    #         choose_definition
-    #     end
-    # end
 
     def list_detail_categories
         puts "\nWhat information would you like about this word? Enter a number."

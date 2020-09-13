@@ -21,7 +21,6 @@ class WordLookup::Word
 
     def fetch_definitions
         @definitions = []
-        #binding.pry
         @detail_hash["results"].each do |meaning|
             @definitions << meaning["definition"]
         end
