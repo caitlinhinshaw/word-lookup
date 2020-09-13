@@ -7,12 +7,12 @@ class WordLookup::Word
 
     def initialize(word_text)
         @word_text = word_text
-        fetch_details(word_text)
+        fetch_details
         @@all << self
     end
 
-    def fetch_details(word_text)
-
+    def fetch_details
+        detail_hash = WordLookup::API.new.fetch_word_details_from_API(@word_text)
     end
 
     def self.all

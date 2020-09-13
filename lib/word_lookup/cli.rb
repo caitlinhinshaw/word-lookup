@@ -1,4 +1,6 @@
 class WordLookup::CLI
+    attr_accessor :current_word
+
     def call
         puts "\nWelcome to Word Lookup!"
         get_chosen_word
@@ -12,7 +14,7 @@ class WordLookup::CLI
     def get_chosen_word
         puts "\nEnter a word to look up:"
         word = gets.strip
-        WordLookup::Word.new(word)
+        @current_word = WordLookup::Word.new(word)
         #binding.pry
     end
 
@@ -29,8 +31,7 @@ class WordLookup::CLI
         if valid_details?(chosen_details)
             puts "this is valid"
             # list_details(chosen_details)
-            WordLookup::API.new.fetch_word_details
-            #expect this to return details for soliloquy right now
+            puts @current_word.fetch_details
         else
             puts "this is NOT valid, please try again"
             get_chosen_details
