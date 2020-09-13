@@ -13,7 +13,7 @@ class WordLookup::CLI
         puts "\nEnter a word to look up:"
         word = gets.strip
         WordLookup::Word.new(word)
-        binding.pry
+        #binding.pry
     end
 
     def list_detail_categories
@@ -29,6 +29,8 @@ class WordLookup::CLI
         if valid_details?(chosen_details)
             puts "this is valid"
             # list_details(chosen_details)
+            WordLookup::API.new.fetch_word_details
+            #expect this to return details for soliloquy right now
         else
             puts "this is NOT valid, please try again"
             get_chosen_details

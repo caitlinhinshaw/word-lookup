@@ -30,5 +30,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "pry"
-  spec.add_dependency "httparty"
+  spec.add_dependency "uri"
+  spec.add_dependency "openssl"
 end

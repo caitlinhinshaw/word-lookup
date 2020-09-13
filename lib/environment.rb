@@ -5,7 +5,9 @@ require_relative "./word_lookup/api"
 
 require 'pry'
 require 'json'
-require 'httparty'
+require 'uri'
+require 'net/http'
+require 'openssl'
 
 module WordLookup
   class Error < StandardError; end
