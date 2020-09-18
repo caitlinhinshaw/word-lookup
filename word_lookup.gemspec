@@ -32,4 +32,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_dependency "uri"
   spec.add_dependency "openssl"
+  spec.add_dependency "dotenv"
 end

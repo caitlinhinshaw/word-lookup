@@ -6,7 +6,7 @@ class WordLookup::API
 
         request = Net::HTTP::Get.new(url)
         request["x-rapidapi-host"] = 'wordsapiv1.p.rapidapi.com'
-        request["x-rapidapi-key"] = 'YOUR_API_KEY_HERE'
+        request["x-rapidapi-key"] = ENV['WORDS_API_KEY']
         
         response = http.request(request)
     end

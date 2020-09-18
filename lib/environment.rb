@@ -8,7 +8,7 @@ require 'json'
 require 'uri'
 require 'net/http'
 require 'openssl'
-
+require 'dotenv/load'
 module WordLookup
   class Error < StandardError; end
   # Your code goes here...
