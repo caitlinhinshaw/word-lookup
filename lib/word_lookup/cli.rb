@@ -61,8 +61,12 @@ class WordLookup::CLI
             puts "\nHere are the synonyms for '#{@current_word.word_text}':"
             print_detail_array(@current_word.synonyms)
         when 2
-            puts "\nHere are the antonyms for '#{@current_word.word_text}':"
-            print_detail_array(@current_word.antonyms)
+            if @current_word.antonyms.empty?
+                puts "\nThe word '#{@current_word.word_text}' has no listed antonyms."
+            else
+                puts "\nHere are the antonyms for '#{@current_word.word_text}':"
+                print_detail_array(@current_word.antonyms)
+            end
         when 3
             puts "\nHere are the similar words for '#{@current_word.word_text}':"
             print_detail_array(@current_word.similar_words)
@@ -71,6 +75,10 @@ class WordLookup::CLI
             print_detail_array(@current_word.rhymes)
         end
         choose_next_action
+    end
+
+    def output_detail_results
+
     end
 
     def print_detail_array(array)
