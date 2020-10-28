@@ -58,27 +58,24 @@ class WordLookup::CLI
     def list_details(chosen_details)
         case chosen_details
         when 1
-            puts "\nHere are the synonyms for '#{@current_word.word_text}':"
-            print_detail_array(@current_word.synonyms)
+            output_detail_results(@current_word.synonyms, "synonyms")
         when 2
-            if @current_word.antonyms.empty?
-                puts "\nThe word '#{@current_word.word_text}' has no listed antonyms."
-            else
-                puts "\nHere are the antonyms for '#{@current_word.word_text}':"
-                print_detail_array(@current_word.antonyms)
-            end
+            output_detail_results(@current_word.antonyms, "antonyms")
         when 3
-            puts "\nHere are the similar words for '#{@current_word.word_text}':"
-            print_detail_array(@current_word.similar_words)
+            output_detail_results(@current_word.similar_words, "similar words")
         when 4
-            puts "\nHere are the rhymes for '#{@current_word.word_text}':"
-            print_detail_array(@current_word.rhymes)
+            output_detail_results(@current_word.rhymes, "rhymes")
         end
         choose_next_action
     end
 
-    def output_detail_results
-
+    def output_detail_results(word_details_array, word_details)
+        if word_details_array.empty?
+            puts "\nThe word '#{@current_word.word_text}' has no listed #{word_details}."
+        else
+            puts "\nHere are the #{word_details} for '#{@current_word.word_text}':"
+            print_detail_array(word_details_array)
+        end
     end
 
     def print_detail_array(array)
