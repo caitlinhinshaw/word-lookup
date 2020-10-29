@@ -1,5 +1,5 @@
 class WordLookup::CLI
-    attr_accessor :current_word, :current_definitions, :current_definition_index
+    attr_accessor :current_word, :current_definitions
 
     def call
         puts "\nWelcome to Word Lookup!"
@@ -10,10 +10,10 @@ class WordLookup::CLI
         puts "\nEnter a word to look up:"
         word = gets.strip
         @current_word = WordLookup::Word.new(word)
-        valid_word?
+        validate_word
     end
 
-    def valid_word?
+    def validate_word
         if @current_word.detail_hash["success"] == false
             puts "\nThe word '#{@current_word.word_text}' was not found. Please try again."
             choose_word
@@ -46,7 +46,7 @@ class WordLookup::CLI
         if valid_choice?(chosen_details, WordLookup::Word.detail_categories)
             list_details(chosen_details)
         else
-            puts "this is NOT valid, please try again"
+            puts "This is not a valid choice. Please try again."
             choose_details
         end
     end
