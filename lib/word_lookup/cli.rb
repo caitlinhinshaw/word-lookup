@@ -2,12 +2,12 @@ class WordLookup::CLI
     attr_accessor :current_word, :current_definitions
 
     def call
-        puts "\nWelcome to Word Lookup!".colorize(:blue)
+        puts "\nWelcome to Word Lookup!".colorize(:light_cyan)
         choose_word
     end
 
     def choose_word
-        puts "\nEnter a word to look up:"
+        puts "\nEnter a word to look up:".colorize(:light_green)
         word = gets.strip
         @current_word = WordLookup::Word.new(word)
         validate_word
@@ -15,7 +15,7 @@ class WordLookup::CLI
 
     def validate_word
         if @current_word.detail_hash["success"] == false
-            puts "\nThe word '#{@current_word.word_text}' was not found. Please try again."
+            puts "\nThe word '#{@current_word.word_text}' was not found. Please try again.".colorize(:light_red)
             choose_word
         else
             @current_word.add_details
@@ -26,14 +26,14 @@ class WordLookup::CLI
 
     def list_definitions
         @current_definitions = @current_word.definitions
-        puts "\nHere are the definition(s) for '#{current_word.word_text}':"
+        puts "\nHere are the definition(s) for '#{current_word.word_text}':".colorize(:light_blue)
         @current_word.definitions.each_with_index do |definition, index|
             puts "#{index+1}. #{definition}"
         end
     end
 
     def list_detail_categories
-        puts "\nWhat information would you like about this word? Enter a number."
+        puts "\nWhat information would you like about the word '#{current_word.word_text}'? Enter a number.".colorize(:light_green)
         puts "\n"
         WordLookup::Word.detail_categories.each_with_index do |category, index|
             puts "#{index+1}. #{category}"
@@ -46,7 +46,7 @@ class WordLookup::CLI
         if valid_choice?(chosen_details, WordLookup::Word.detail_categories)
             list_details(chosen_details)
         else
-            puts "This is not a valid choice. Please try again."
+            puts "This is not a valid choice. Please try again.".colorize(:light_red)
             choose_details
         end
     end
@@ -71,9 +71,9 @@ class WordLookup::CLI
 
     def output_detail_results(word_details_array, word_details)
         if word_details_array.empty?
-            puts "\nThe word '#{@current_word.word_text}' has no listed #{word_details}."
+            puts "\nThe word '#{@current_word.word_text}' has no listed #{word_details}.".colorize(:light_blue)
         else
-            puts "\nHere are the #{word_details} for '#{@current_word.word_text}':"
+            puts "\nHere are the #{word_details} for '#{@current_word.word_text}':".colorize(:light_blue)
             print_detail_array(word_details_array)
         end
     end
@@ -85,8 +85,8 @@ class WordLookup::CLI
     end
 
     def choose_next_action
-        puts "\nWhat would you like to do?"
-        puts "Enter 1 for more details on '#{@current_word.word_text}'."
+        puts "\nWhat would you like to do?".colorize(:light_green)
+        puts "\nEnter 1 for more details on '#{@current_word.word_text}'."
         puts "Enter 2 to look up a new word."
         puts "Enter 3 to exit the program."
         next_action = gets.strip.to_i
@@ -96,10 +96,10 @@ class WordLookup::CLI
         when 2
             choose_word
         when 3
-            puts "Goodbye!"
+            puts "\nGoodbye!".colorize(:light_cyan)
             exit
         else
-            puts "This is not a valid selection. Please try again."
+            puts "This is not a valid selection. Please try again.".colorize(:light_red)
             choose_next_action
         end
     end
