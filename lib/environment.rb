@@ -9,6 +9,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 require 'dotenv/load'
+require 'colorize'
 module WordLookup
   class Error < StandardError; end
   # Your code goes here...

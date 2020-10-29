@@ -33,4 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "uri"
   spec.add_dependency "openssl"
   spec.add_dependency "dotenv"
+  spec.add_dependency "colorize"
 end

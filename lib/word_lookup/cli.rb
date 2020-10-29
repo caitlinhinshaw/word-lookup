@@ -2,7 +2,7 @@ class WordLookup::CLI
     attr_accessor :current_word, :current_definitions
 
     def call
-        puts "\nWelcome to Word Lookup!"
+        puts "\nWelcome to Word Lookup!".colorize(:blue)
         choose_word
     end
 
