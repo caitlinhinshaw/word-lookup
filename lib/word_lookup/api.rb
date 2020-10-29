@@ -8,7 +8,7 @@ class WordLookup::API
         request["x-rapidapi-host"] = 'wordsapiv1.p.rapidapi.com'
         request["x-rapidapi-key"] = ENV['WORDS_API_KEY']
         
-        response = http.request(request)
+        http.request(request)
     end
 
     def fetch_word_details_from_API(word)

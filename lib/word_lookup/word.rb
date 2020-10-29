@@ -28,7 +28,7 @@ class WordLookup::Word
 
     def fetch_synonyms
         @synonyms = []
-        @detail_hash["results"].each do |meaning|
+        @detail_hash["results"].each do |meaning| #collects the synonyms for each meaning to display all at once
             @synonyms << meaning["synonyms"]
             @synonyms << meaning["also"]
         end
