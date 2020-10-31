@@ -32,7 +32,7 @@ If you'd prefer to make use of the dotenv gem yourself, follow these steps inste
    as the `bin`, `lib`,`README.md`, etc).
 2. In your new `.env` file, add your private variable(s). For Word Lookup, name
    the variable `WORDS_API_KEY`. The `.env` file should look something like this:
-    WORDS_API_KEY=adsfjbafkgasdfasdfgsdgadsg
+    `WORDS_API_KEY=adsfjbafkgasdfasdfgsdgadsg`
 3. Now the program can access your API key with `ENV['WORDS_API_KEY']` in the
    API call.
 4. If you plan to upload your copy to GitHub or another version control site,
