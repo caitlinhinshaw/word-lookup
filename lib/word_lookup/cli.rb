@@ -97,6 +97,7 @@ class WordLookup::CLI
             choose_word
         when 3
             puts "\nGoodbye!".colorize(:light_cyan)
+            puts "\n"
             exit
         else
             puts "This is not a valid selection. Please try again.".colorize(:light_red)

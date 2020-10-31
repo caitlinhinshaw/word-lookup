@@ -4,40 +4,46 @@ A CLI application geared towards writers that uses the Words API to provide defi
 
 ## Installation
 
-Add this line to your application's Gemfile:
+### Dependencies
 
-```ruby
-gem 'word_lookup'
-```
+Make sure you have Ruby and the bundler gem installed on your machine.
 
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install word_lookup
+Download or clone the repo, then navigate to the root folder and run `bundle install`
+to install all other dependencies.
 
 ## Usage
 
-TODO: Write usage instructions here
+### Setting Up Your API Key
 
 Word Lookup makes use of the [dotenv](https://github.com/bkeepers/dotenv)
 gem to keep private variables safe. To run it locally, you'll need to provide
-your own API key. Just replace `ENV['WORDS_API_KEY']` in the API call with your
+your own API key.
+
+Get your personal API key by logging into [RapidAPI](https://rapidapi.com/dpventures/api/wordsapi).
+
+Then, replace `ENV['WORDS_API_KEY']` in the API call with your
 own key from the Words API.
 
-If you'd prefer to make use of the dotenv gem yourself, follow these steps:
+OR
 
-1. Make a file called simply `.env` in the root folder (this is the same level
+If you'd prefer to make use of the dotenv gem yourself, follow these steps instead:
+
+1. Make a file called `.env` in the root folder (this is the same level
    as the `bin`, `lib`,`README.md`, etc).
 2. In your new `.env` file, add your private variable(s). For Word Lookup, name
    the variable `WORDS_API_KEY`. The `.env` file should look something like this:
     WORDS_API_KEY=adsfjbafkgasdfasdfgsdgadsg
 3. Now the program can access your API key with `ENV['WORDS_API_KEY']` in the
    API call.
-4. If you plan to upload your copy to GitHub, make sure git will ignore your
-   `.env` file! In your `.gitignore` file, just add `.env` to exclude it from the upload.
+4. If you plan to upload your copy to GitHub or another version control site,
+   make sure git will ignore your`.env` file! In your `.gitignore` file, just
+   add `.env` to exclude it from the upload.
+
+### Running the Program
+
+Once you have your API key set up, you can run the gem with `bin/word_lookup`
+while in the root folder. Follow the command line instructions to look up
+information about your word of choice!
 
 ## Development
 
@@ -48,7 +54,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at <https://github.com/caitlinhinshaw/word-lookup>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/caitlinhinshaw/word-lookup/blob/master/CODE_OF_CONDUCT.md).
-
 
 ## License
 
