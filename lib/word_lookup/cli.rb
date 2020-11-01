@@ -1,5 +1,5 @@
 class WordLookup::CLI
-    attr_accessor :current_word, :current_definitions
+    attr_accessor :current_word
 
     def call
         puts "\nWelcome to Word Lookup!".colorize(:light_cyan)
@@ -20,16 +20,15 @@ class WordLookup::CLI
         else
             @current_word.add_details
             list_definitions
-            list_detail_categories
         end
     end
 
     def list_definitions
-        @current_definitions = @current_word.definitions
         puts "\nHere are the definition(s) for '#{current_word.word_text}':".colorize(:light_blue)
         @current_word.definitions.each_with_index do |definition, index|
             puts "#{index+1}. #{definition}"
         end
+        list_detail_categories
     end
 
     def list_detail_categories

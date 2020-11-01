@@ -59,6 +59,9 @@ class WordLookup::Word
     def flatten_and_remove_nils(array)
         flat_array = array.flatten.uniq
         flat_array.compact unless array.none? {|a| a.nil?}
+        #returns a flattened array with no nils or duplicate values
+        #unless statement is necessary because array.compact returns nil if
+        #there are no nil values, and we want it to return the array instead
     end
 
     def self.all

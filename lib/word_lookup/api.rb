@@ -17,6 +17,7 @@ class WordLookup::API
         json = API_call(url)
 
         convert_json_to_ruby(json)
+        #returns Ruby hash of word details
     end
 
     def fetch_rhymes_from_API(word)
@@ -25,6 +26,7 @@ class WordLookup::API
         json = API_call(url)
 
         convert_json_to_ruby(json)
+        #returns Ruby hash of rhymes
     end
 
     def convert_json_to_ruby(json)
