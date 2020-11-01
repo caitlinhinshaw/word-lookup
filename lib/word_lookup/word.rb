@@ -11,22 +11,24 @@ class WordLookup::Word
         @@all << self
     end
 
-    def add_details
-        fetch_definitions
-        fetch_synonyms
-        fetch_antonyms
-        fetch_similar_words
-        fetch_rhymes
+    def add_details 
+        #This method assigns values to the attributes based on the detail hash from the API.
+        #It's not called until the word is validated in the CLI to avoid errors from trying to
+        #iterate through non-existent hashes.
+        add_definitions
+        add_synonyms
+        add_antonyms
+        add_similar_words
+        add_rhymes
     end
 
-    def fetch_definitions
-        @definitions = []
-        @detail_hash["results"].each do |meaning|
-            @definitions << meaning["definition"]
+    def add_definitions
+        @definitions = @detail_hash["results"].collect do |meaning|
+            meaning["definition"]
         end
     end
 
-    def fetch_synonyms
+    def add_synonyms
         @synonyms = []
         @detail_hash["results"].each do |meaning| #collects the synonyms for each meaning to display all at once
             @synonyms << meaning["synonyms"]
@@ -35,23 +37,21 @@ class WordLookup::Word
         @synonyms = flatten_and_remove_nils(@synonyms)
     end
 
-    def fetch_antonyms
-        @antonyms = []
-        @detail_hash["results"].each do |meaning|
-            @antonyms << meaning["antonyms"]
+    def add_antonyms
+        @antonyms = @detail_hash["results"].collect do |meaning|
+            meaning["antonyms"]
         end
         @antonyms = flatten_and_remove_nils(@antonyms)
     end
 
-    def fetch_similar_words
-        @similar_words = []
-        @detail_hash["results"].each do |meaning|
-            @similar_words << meaning["similarTo"]
+    def add_similar_words
+        @similar_words = @detail_hash["results"].collect do |meaning|
+            meaning["similarTo"]
         end
         @similar_words = flatten_and_remove_nils(@similar_words)
     end
 
-    def fetch_rhymes
+    def add_rhymes
         rhyme_hash = WordLookup::API.new.fetch_rhymes_from_API(@word_text)
         @rhymes = rhyme_hash["rhymes"]["all"]
     end
