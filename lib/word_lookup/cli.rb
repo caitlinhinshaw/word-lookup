@@ -51,7 +51,7 @@ class WordLookup::CLI
     end
 
     def valid_choice?(input, array)
-        input.between?(0, array.length)
+        input.between?(1, array.length)
     end
 
     def list_details(chosen_details)
